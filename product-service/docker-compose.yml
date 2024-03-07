@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  productdb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: product
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changemeinprod!
+    volumes:
+      - product_data:/var/lib/postgresql/data
+
+  inventorydb:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: inventory
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changemeinprod!
+    volumes:
+      - inventory_data:/var/lib/postgresql/data
+
+  orderdb:
+    image: postgres
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: orderdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changemeinprod!
+    volumes:
+      - order_data:/var/lib/postgresql/data
+
+volumes:
+  product_data:
+  inventory_data:
+  order_data:
